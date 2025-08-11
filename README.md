@@ -15,7 +15,7 @@ The main objectives of this project are to create a tool that can perform the fo
 This project has important limitations and risks that must be understood:
 -	**Financial Risk:** Using an AI model to make trading decisions, especially on high-risk instruments like futures, carries a very high risk of financial loss. This AI is an experimental tool and is not recommended for use in live trading.
 -	**AI Uncertainty:** The Gemini model is a general-purpose, multimodal model, not one specifically trained for technical trading analysis. Therefore, its responses may not always be consistent or accurate.
--	**Dependency on Prompt Quality:** The success of this project is highly dependent on the quality and specificity of the prompt you provide to the Gemini API.
+-	**Dependency on System Instructions Quality:** The success of this project is highly dependent on the quality and specificity of the System Instructions you provide to the Gemini API.
 
 ## License
 
