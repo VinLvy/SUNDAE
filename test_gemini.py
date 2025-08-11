@@ -68,32 +68,18 @@ def load_image_for_gemini(image_path):
 def analyze_trading_chart(model, image_path):
     """Analyze a trading chart image using Gemini API."""
     
-    # System prompt for trading signal analysis
-    system_prompt = """
-    You are a trading signal analyzer. Your task is to analyze trading chart screenshots and provide a consistent output.
-    
-    Instructions:
-    1. Carefully examine the trading chart image
-    2. Look for technical indicators, price patterns, support/resistance levels
-    3. Analyze the overall trend and momentum
-    4. Provide a clear, consistent response in this exact format:
-       - If the analysis suggests a bullish/upward move: "Long"
-       - If the analysis suggests a bearish/downward move: "Short"
-       - If the analysis is unclear or neutral: "Neutral"
-    
-    Be consistent and only use these three exact words: Long, Short, or Neutral.
-    """
-    
     try:
         # Load the image
         image = load_image_for_gemini(image_path)
         if image is None:
             return None
         
-        # Send image and prompt to Gemini
+        # Send only the image to Gemini (system prompt is configured in AI Studio)
         print("🔄 Sending image to Gemini API for analysis...")
+        print("ℹ️  System prompt is configured in Google AI Studio as 'SUNDAE' crypto analyst")
         
-        response = model.generate_content([system_prompt, image])
+        # Send just the image - the system prompt will be automatically applied
+        response = model.generate_content(image)
         
         print("✅ Received response from Gemini API")
         return response.text
@@ -104,7 +90,10 @@ def analyze_trading_chart(model, image_path):
 
 def main():
     """Main function to run the Gemini API test."""
-    print("🚀 Starting Gemini API Test Script")
+    print("🚀 Starting SUNDAE Crypto Analyst Test Script")
+    print("=" * 50)
+    print("ℹ️  This script tests the SUNDAE system prompt configured in Google AI Studio")
+    print("ℹ️  The AI will analyze trading charts and provide detailed trading signals")
     print("=" * 50)
     
     # Step 1: Set up API key
@@ -130,7 +119,7 @@ def main():
     
     if response:
         print("\n" + "=" * 50)
-        print("📊 GEMINI API RESPONSE:")
+        print("🔥 SUNDAE ANALYSIS RESPONSE:")
         print("=" * 50)
         print(response)
         print("=" * 50)

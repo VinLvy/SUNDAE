@@ -1,9 +1,10 @@
-# Setup Guide for Gemini API Test Script
+# Setup Guide for SUNDAE Crypto Analyst Test Script
 
 ## Prerequisites
 
 1. **Python 3.7+** installed on your system
 2. **Gemini API Key** from Google AI Studio
+3. **SUNDAE System Prompt** configured in Google AI Studio
 
 ## Installation Steps
 
@@ -13,13 +14,22 @@
 pip install -r requirements.txt
 ```
 
-### 2. Get Your Gemini API Key
+### 2. Configure SUNDAE System Prompt in Google AI Studio
 
 1. Go to [Google AI Studio](https://aistudio.google.com/)
 2. Sign in with your Google account
-3. Navigate to "Get API key" section
-4. Create a new API key
-5. Copy the API key
+3. **IMPORTANT**: Before getting your API key, set up the System Instructions
+4. In the System Instructions section, paste the SUNDAE prompt script:
+
+   ```
+   Contact me if you want the script
+   ```
+
+### 3. Get Your Gemini API Key
+
+1. After setting up the System Instructions, navigate to "Get API key" section
+2. Create a new API key
+3. Copy the API key
 
 ### 3. Set Up API Key
 
@@ -61,8 +71,13 @@ The script will:
 1. ✅ Configure Gemini API
 2. ✅ Load the Gemini Pro Vision model
 3. ✅ Load and encode your image
-4. ✅ Send the image to Gemini for analysis
-5. ✅ Display the trading signal response (Long/Short/Neutral)
+4. ✅ Send the image to Gemini for analysis (using SUNDAE system prompt)
+5. ✅ Display the detailed SUNDAE trading analysis with:
+   - Entry, Stop Loss, Take Profit levels
+   - Risk-Reward ratio and Confidence Level
+   - Technical analysis with multi-timeframe confirmation
+   - VWAP, Liquidity, FVG, BOS/CHoCH analysis
+   - Estimated move duration and execution notes
 
 ## Troubleshooting
 
