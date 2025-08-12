@@ -64,10 +64,6 @@ GEMINI_API_KEY=your_api_key_here
 
 The script will auto-load this if `python-dotenv` is installed (already in `requirements.txt`).
 
-#### Option D: Local key file
-
-Create a file `config/gemini_api_key.txt` containing only your API key (single line). An example template is provided at `config/gemini_api_key.example.txt`.
-
 ### 4. Prepare Test Image
 
 Place a trading chart screenshot in your project directory with the name `trading_chart.png`, or update the `image_path` variable in the script to point to your image.
