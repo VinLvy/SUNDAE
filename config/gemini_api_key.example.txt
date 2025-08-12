@@ -1,0 +1,5 @@
+# Place your Gemini API key on a single line in a file named:
+#   config/gemini_api_key.txt
+# Example (replace with your real key, do not add quotes):
+# AIz...
+
