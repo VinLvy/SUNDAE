@@ -1,6 +1,6 @@
-# Setup Guide - Gemini 2.5 Integration
+# Setup Guide - SUNDAE Crypto Futures Analyst with Gemini 2.5
 
-This guide will help you set up the SUNDAE Crypto Analyst project with the latest Gemini 2.5 AI model.
+This guide will help you set up the SUNDAE Crypto Futures Analyst project with the latest Gemini 2.5 AI model. The system provides ready-to-execute trading signals in a professional format using the SUNDAE crypto futures analyst system prompt.
 
 ## 🚀 Quick Start
 
@@ -60,7 +60,7 @@ python test_gemini.py
 
 The script automatically uses the best available model:
 
-- **Primary**: `gemini-2.0-flash-exp` (Gemini 2.5 capabilities)
+- **Primary**: `gemini-2.5-flash` (latest stable Gemini 2.5 model)
 - **Fallback**: `gemini-1.5-flash` (if 2.5 unavailable)
 
 ### Custom Model Configuration
@@ -71,7 +71,7 @@ You can modify the model selection in `test_gemini.py`:
 def load_gemini_model():
     try:
         # Use specific model
-        model = genai.GenerativeModel('gemini-2.0-flash-exp')
+        model = genai.GenerativeModel('gemini-2.5-flash')
         return model
     except Exception as e:
         # Fallback logic
@@ -142,29 +142,32 @@ pip install -r requirements.txt
 - **Format**: PNG provides best quality for charts
 - **Resolution**: 1920x1080 or lower recommended
 
-## 📱 Google AI Studio Configuration
+## 📱 SUNDAE System Prompt
 
-### Setting Up SUNDAE System Prompt
+### Built-in SUNDAE Prompt
 
-1. Go to [Google AI Studio](https://aistudio.google.com/)
-2. Create a new chat
-3. Configure system instructions for crypto analysis
-4. Test with sample trading charts
-5. Refine the prompt based on results
+The SUNDAE crypto futures analyst system prompt is now built directly into the code. This means:
 
-### Recommended System Prompt Structure
+1. **No External Configuration Needed**: The prompt is automatically included with every analysis
+2. **Consistent Format**: Every analysis follows the same professional SUNDAE format
+3. **Ready-to-Execute Signals**: Includes Entry, SL, TP, Risk-Reward, and Confidence levels
+4. **Multi-Timeframe Analysis**: Automatically includes 1D, 4H, 1H confirmation
+5. **Professional Structure**: Uses emojis and clear technical reasoning
 
-```
-You are SUNDAE, an expert crypto trading analyst. Your role is to:
+### What SUNDAE Provides
 
-1. Analyze trading charts for technical patterns
-2. Identify support/resistance levels
-3. Provide clear Long/Short signals
-4. Explain your reasoning
-5. Include risk management notes
+The SUNDAE system automatically analyzes charts and provides:
 
-Always be consistent and professional in your analysis.
-```
+- 🔥 **Trading Signal**: Pair, Direction, and Setup type
+- 📍 **Entry Point**: Specific entry price
+- 🛑 **Stop Loss**: Risk management level
+- 🎯 **Take Profit**: TP1, TP2, TP3 targets
+- 📊 **Risk-Reward Ratio**: Risk vs. potential reward
+- ✅ **Confidence Level**: Signal strength percentage
+- 🔍 **Technical Analysis**: Multi-timeframe confirmation, volume, VWAP, BOS/CHoCH
+- ⏰ **Move Duration**: Estimated time for the trade
+- 📈📉 **Scenarios**: What happens if TP or SL is hit
+- ⚠️ **Execution Notes**: Specific entry conditions
 
 ## 🔄 Updating from Previous Version
 
@@ -197,11 +200,27 @@ Modify the `image_path` variable in the script to test with your own images.
 
 The script should output:
 
-- ✅ Gemini API configured successfully
+- ✅ Gemini API key configured successfully
 - ✅ Gemini 2.5 Flash model loaded successfully
 - ✅ Image loaded successfully
-- 🔄 Sending image to Gemini 2.5 API for analysis...
-- ✅ Received response from Gemini 2.5 API
+- 🔄 Sending image to Gemini 2.5 API for SUNDAE analysis...
+- ✅ Received SUNDAE analysis from Gemini 2.5 API
+
+**Expected SUNDAE Output Format:**
+
+```
+🔥 SUNDAE: [PAIR] – [DIRECTION] ([SETUP])
+📍 Entry: [PRICE]
+🛑 Stop Loss: [PRICE]
+🎯 Take Profit: TP1: [PRICE], TP2: [PRICE], TP3: [PRICE]
+📊 Risk-Reward: [RATIO]
+✅ Confidence Level: [PERCENTAGE]%
+🔍 Reason / Analysis: [TECHNICAL ANALYSIS]
+⏰ Estimated Move Duration: [TIME]
+📈 Scenario if TP: [DESCRIPTION]
+📉 Scenario if SL: [DESCRIPTION]
+⚠️ Execution Notes: [ENTRY CONDITIONS]
+```
 
 ## 🎯 Next Steps
 
