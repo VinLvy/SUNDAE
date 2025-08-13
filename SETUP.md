@@ -1,12 +1,8 @@
-# Setup Guide for SUNDAE Crypto Analyst Test Script
+# Setup Guide - Gemini 2.5 Integration
 
-## Prerequisites
+This guide will help you set up the SUNDAE Crypto Analyst project with the latest Gemini 2.5 AI model.
 
-1. **Python 3.7+** installed on your system
-2. **Gemini API Key** from Google AI Studio
-3. **SUNDAE System Prompt** configured in Google AI Studio
-
-## Installation Steps
+## 🚀 Quick Start
 
 ### 1. Install Dependencies
 
@@ -14,114 +10,221 @@
 pip install -r requirements.txt
 ```
 
-### 2. Configure SUNDAE System Prompt in Google AI Studio
+### 2. Get Your Gemini API Key
 
-1. Go to [Google AI Studio](https://aistudio.google.com/)
+1. Visit [Google AI Studio](https://aistudio.google.com/)
 2. Sign in with your Google account
-3. **IMPORTANT**: Before getting your API key, set up the System Instructions
-4. In the System Instructions section, paste the SUNDAE prompt script:
+3. Navigate to "Get API key" section
+4. Create a new API key
+5. Copy the key (it starts with "AI...")
 
-   ```
-   Contact me if you want the script
-   ```
+### 3. Configure API Key
 
-### 3. Get Your Gemini API Key
+Choose one of these methods:
 
-1. After setting up the System Instructions, navigate to "Get API key" section
-2. Create a new API key
-3. Copy the API key
-
-### 3. Set Up API Key
-
-#### Option A: Environment Variable (Recommended)
+#### Method A: Environment Variable (Recommended)
 
 ```bash
-# On Windows (PowerShell)
+# Windows PowerShell
 $env:GEMINI_API_KEY="your_api_key_here"
 
-# On Windows (Command Prompt)
+# Windows Command Prompt
 set GEMINI_API_KEY=your_api_key_here
 
-# On macOS/Linux
+# Linux/Mac
 export GEMINI_API_KEY="your_api_key_here"
 ```
 
-#### Option B: Direct in Script (Less Secure)
+#### Method B: .env File
 
-Edit `test_gemini.py` and replace the environment variable check with:
-
-```python
-api_key = "your_actual_api_key_here"
+```bash
+echo "GEMINI_API_KEY=your_api_key_here" > .env
 ```
 
-#### Option C: .env file (Recommended for local dev)
+#### Method C: Local Configuration File
 
-Create a file named `.env` in the project root with:
-
+```bash
+mkdir config
+echo "your_api_key_here" > config/gemini_api_key.txt
 ```
-GEMINI_API_KEY=your_api_key_here
-```
 
-The script will auto-load this if `python-dotenv` is installed (already in `requirements.txt`).
-
-### 4. Prepare Test Image
-
-Place a trading chart screenshot in your project directory with the name `trading_chart.png`, or update the `image_path` variable in the script to point to your image.
-
-## Running the Script
+### 4. Test the Setup
 
 ```bash
 python test_gemini.py
 ```
 
-## Expected Output
+## 🔧 Advanced Configuration
 
-The script will:
+### Model Selection
 
-1. ✅ Configure Gemini API
-2. ✅ Load the Gemini Pro Vision model
-3. ✅ Load and encode your image
-4. ✅ Send the image to Gemini for analysis (using SUNDAE system prompt)
-5. ✅ Display the detailed SUNDAE trading analysis with:
-   - Entry, Stop Loss, Take Profit levels
-   - Risk-Reward ratio and Confidence Level
-   - Technical analysis with multi-timeframe confirmation
-   - VWAP, Liquidity, FVG, BOS/CHoCH analysis
-   - Estimated move duration and execution notes
+The script automatically uses the best available model:
 
-## Troubleshooting
+- **Primary**: `gemini-2.0-flash-exp` (Gemini 2.5 capabilities)
+- **Fallback**: `gemini-1.5-flash` (if 2.5 unavailable)
 
-### Common Issues:
+### Custom Model Configuration
 
-1. **"GEMINI_API_KEY environment variable not found"**
+You can modify the model selection in `test_gemini.py`:
 
-   - Make sure you've set the environment variable correctly
-   - Restart your terminal after setting the variable
+```python
+def load_gemini_model():
+    try:
+        # Use specific model
+        model = genai.GenerativeModel('gemini-2.0-flash-exp')
+        return model
+    except Exception as e:
+        # Fallback logic
+        pass
+```
 
-2. **"Image file not found"**
+### Image Format Support
 
-   - Ensure the image file exists in the specified path
-   - Update the `image_path` variable in the script
+Supported formats:
 
-3. **Import errors**
-
-   - Make sure you've installed all dependencies: `pip install -r requirements.txt`
-
-4. **API errors**
-   - Verify your API key is correct
-   - Check if you have sufficient API quota
-   - Ensure the image format is supported (PNG, JPEG, etc.)
-
-## Supported Image Formats
-
-- PNG
+- PNG (recommended)
 - JPEG/JPG
 - WebP
 - BMP
 - TIFF
 
-## Security Notes
+## 🐛 Troubleshooting
+
+### Common Issues
+
+#### 1. API Key Not Found
+
+```
+❌ Gemini API key not found!
+```
+
+**Solution**: Ensure your API key is set using one of the three methods above.
+
+#### 2. Model Loading Error
+
+```
+❌ Error loading Gemini model: [error message]
+```
+
+**Solution**:
+
+- Check your internet connection
+- Verify your API key is valid
+- The script will automatically fall back to Gemini 1.5
+
+#### 3. Image Processing Error
+
+```
+❌ Error loading image: [error message]
+```
+
+**Solution**:
+
+- Ensure the image file exists
+- Check file permissions
+- Verify image format is supported
+
+#### 4. Import Error
+
+```
+ModuleNotFoundError: No module named 'google.genai'
+```
+
+**Solution**:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Performance Optimization
+
+- **Image Size**: Keep images under 4MB for optimal performance
+- **Format**: PNG provides best quality for charts
+- **Resolution**: 1920x1080 or lower recommended
+
+## 📱 Google AI Studio Configuration
+
+### Setting Up SUNDAE System Prompt
+
+1. Go to [Google AI Studio](https://aistudio.google.com/)
+2. Create a new chat
+3. Configure system instructions for crypto analysis
+4. Test with sample trading charts
+5. Refine the prompt based on results
+
+### Recommended System Prompt Structure
+
+```
+You are SUNDAE, an expert crypto trading analyst. Your role is to:
+
+1. Analyze trading charts for technical patterns
+2. Identify support/resistance levels
+3. Provide clear Long/Short signals
+4. Explain your reasoning
+5. Include risk management notes
+
+Always be consistent and professional in your analysis.
+```
+
+## 🔄 Updating from Previous Version
+
+If you're upgrading from the old `google-generativeai` SDK:
+
+1. **Backup your current setup**
+2. **Update dependencies**:
+   ```bash
+   pip uninstall google-generativeai
+   pip install -r requirements.txt
+   ```
+3. **Test the new setup**:
+   ```bash
+   python test_gemini.py
+   ```
+
+## 📊 Testing Your Setup
+
+### 1. Basic Test
+
+```bash
+python test_gemini.py
+```
+
+### 2. Custom Image Test
+
+Modify the `image_path` variable in the script to test with your own images.
+
+### 3. API Response Test
+
+The script should output:
+
+- ✅ Gemini API configured successfully
+- ✅ Gemini 2.5 Flash model loaded successfully
+- ✅ Image loaded successfully
+- 🔄 Sending image to Gemini 2.5 API for analysis...
+- ✅ Received response from Gemini 2.5 API
+
+## 🎯 Next Steps
+
+After successful setup:
+
+1. **Customize the system prompt** in Google AI Studio
+2. **Test with various chart types** (candlestick, line, etc.)
+3. **Integrate with your trading workflow**
+4. **Monitor API usage** and costs
+5. **Fine-tune analysis parameters**
+
+## 📞 Support
+
+If you encounter issues:
+
+1. Check the troubleshooting section above
+2. Verify your API key is active
+3. Test with a simple image first
+4. Check the [Google AI Studio documentation](https://ai.google.dev/docs)
+
+## 🔒 Security Notes
 
 - Never commit your API key to version control
 - Use environment variables for production deployments
-- The API key gives access to your Gemini account and quota
+- Regularly rotate your API keys
+- Monitor API usage for unusual activity
