@@ -51,18 +51,18 @@ def main():
         4. **Download Results**: Save the analysis for your records
         """)
         
-        st.markdown("### 🔥 SUNDAE Features")
-        st.markdown("""
-        • **Multi-timeframe Analysis** (1D, 4H, 1H)
-        • **Entry, Stop Loss & Take Profit** levels
-        • **Risk-Reward Ratio** calculation
-        • **Confidence Level** assessment
-        • **Technical Analysis** with professional terms
-        • **Execution Notes** for trade setup
-        """)
+        # st.markdown("### 🔥 SUNDAE Features")
+        # st.markdown("""
+        # • **Multi-timeframe Analysis** (1D, 4H, 1H)
+        # • **Entry, Stop Loss & Take Profit** levels
+        # • **Risk-Reward Ratio** calculation
+        # • **Confidence Level** assessment
+        # • **Technical Analysis** with professional terms
+        # • **Execution Notes** for trade setup
+        # """)
     
     # Main content area - centered layout
-    col1, col2, col3 = st.columns([1, 2, 1])
+    col1, col2, col3 = st.columns([1, 3, 1])
     
     with col2:
         st.header("📊 Upload Trading Chart")
@@ -76,7 +76,7 @@ def main():
         
         # Display uploaded image
         if uploaded_file is not None:
-            st.image(uploaded_file, caption="Trading Chart", use_column_width=True)
+            st.image(uploaded_file, caption="Trading Chart", use_container_width=True)
             
             # Show file details
             file_details = {
@@ -134,11 +134,17 @@ Main Focus: Reading crypto charts from images sent by the user, then providing r
 📝 Example Output to Follow:
 
 🔥 SUNDAE: [PAIR] – [DIRECTION] ([SETUP])
+
 📍 Entry: ...
+
 🛑 Stop Loss: ...
+
 🎯 Take Profit: ...
+
 📊 Risk-Reward: ...
+
 ✅ Confidence Level: ...
+
 🔍 Reason / Analysis:
 ... (structure as per example)
 ⏰ Estimated Move Duration: ...
@@ -192,7 +198,7 @@ Now analyze the trading chart image and provide your SUNDAE analysis following t
     st.markdown("---")
     st.markdown(
         "<div style='text-align: center; color: #666;'>"
-        "🔥 SUNDAE Crypto Futures Analyst - Built with ❤️ using Streamlit and Google Gemini AI"
+        "🔥 SUNDAE Crypto Futures Analyst - Built by <a href='https://github.com/VinLvy' target='_blank'>VinLvy</a> with ❤️ using Streamlit and Google Gemini AI"
         "</div>",
         unsafe_allow_html=True
     )
