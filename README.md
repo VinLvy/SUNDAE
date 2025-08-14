@@ -1,154 +1,126 @@
-# SUNDAE Crypto Futures Analyst - Gemini 2.5 Integration
+# SUNDAE Crypto Futures Analyst
 
-This project demonstrates the integration of Google's Gemini 2.5 AI model with the SUNDAE system prompt for advanced crypto futures trading chart analysis. The system provides ready-to-execute trading signals in a predefined professional format, including entry points, stop losses, take profits, and comprehensive technical analysis.
+A powerful Streamlit application that uses Google's Gemini AI to automatically analyze crypto trading charts and provide ready-to-execute trading signals using the SUNDAE system prompt.
 
 ## 🚀 Features
 
-- **SUNDAE Integration**: Uses the SUNDAE crypto futures analyst system prompt for professional trading analysis
-- **Gemini 2.5 Integration**: Uses the latest Gemini 2.5 Flash model for enhanced analysis capabilities
-- **Ready-to-Execute Signals**: Provides complete trading setups with Entry, SL, TP, Risk-Reward, and Confidence
-- **Multi-Timeframe Analysis**: Includes 1D, 4H, 1H timeframe confirmation
-- **Professional Format**: Structured output with emojis and clear technical reasoning
-- **Image Processing**: Analyzes trading chart images with advanced AI capabilities
-- **Multiple API Key Sources**: Supports environment variables, .env files, and local configuration files
-
-## 📋 Prerequisites
-
-- Python 3.9+
-- Gemini API key from [Google AI Studio](https://aistudio.google.com/)
-- Trading chart images for analysis
+- **🔥 SUNDAE AI Analysis**: Automatic crypto futures analysis with predefined professional prompts
+- **📊 Trading Chart Upload**: Support for multiple image formats (PNG, JPG, JPEG, GIF, BMP, WebP)
+- **🎯 Ready-to-Execute Signals**: Complete trading setups with Entry, SL, TP, Risk-Reward, and Confidence
+- **⏰ Multi-Timeframe Analysis**: Includes 1D, 4H, 1H timeframe confirmation
+- **📈 Professional Format**: Structured output with emojis and clear technical reasoning
+- **💾 Download Results**: Save analysis results as text files
+- **🔧 Multiple Models**: Choose from different Gemini AI models
 
 ## 🛠️ Installation
 
-1. Clone this repository:
-
-```bash
-git clone <repository-url>
-cd prototype-3
-```
-
-2. Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-3. Set up your Gemini API key using one of these methods:
-
-   **Option A: Environment Variable**
+1. **Clone the repository**:
 
    ```bash
-   export GEMINI_API_KEY="your_api_key_here"
+   git clone <repository-url>
+   cd SUNDAE
    ```
 
-   **Option B: .env File**
+2. **Install dependencies**:
 
    ```bash
-   echo "GEMINI_API_KEY=your_api_key_here" > .env
+   pip install -r requirements.txt
    ```
 
-   **Option C: Local File**
+3. **Get your Gemini API Key**:
+   - Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
+   - Create a new API key
+   - Copy the key for use in the application
 
-   ```bash
-   mkdir config
-   echo "your_api_key_here" > config/gemini_api_key.txt
-   ```
+## 🚀 Running the Application
 
-## 🎯 Usage
-
-### Basic Usage
-
-Run the test script to analyze a trading chart:
+### Method 1: Using the launcher script
 
 ```bash
-python test_gemini.py
+python run_app.py
 ```
 
-Make sure you have a `trading_chart.png` file in the project directory, or update the `image_path` variable in the script.
+### Method 2: Direct Streamlit command
 
-### Advanced Configuration
-
-The script automatically detects and uses the best available Gemini model:
-
-- **Primary**: Gemini 2.0 Flash Experimental (2.5 capabilities)
-- **Fallback**: Gemini 1.5 Flash
-
-## 🔧 Technical Details
-
-### SDK Version
-
-- **New**: `google-genai` (latest version)
-- **Previous**: `google-generativeai`
-
-### Model Capabilities
-
-- **Gemini 2.5**: Enhanced multimodal understanding, better image analysis
-- **Model Used**: `gemini-2.5-flash` (latest stable Gemini 2.5 model)
-- **Image Support**: PNG, JPEG, and other common formats
-- **API Integration**: Direct image byte processing for optimal performance
-
-### Error Handling
-
-- Graceful fallback between model versions
-- Comprehensive error reporting
-- Multiple API key source support
-
-## 📊 Example Output
-
-```
-🚀 Starting SUNDAE Crypto Futures Analyst with Gemini 2.5
-============================================================
-ℹ️  This script uses the SUNDAE system prompt for professional crypto analysis
-ℹ️  The AI will analyze trading charts and provide ready-to-execute trading signals
-ℹ️  Using Gemini 2.5 Flash model with SUNDAE crypto futures expertise
-============================================================
-✅ Gemini API key configured successfully
-✅ Gemini 2.5 Flash model loaded successfully
-✅ Image loaded successfully: trading_chart.png
-🔄 Sending image to Gemini 2.5 API for SUNDAE analysis...
-✅ Received SUNDAE analysis from Gemini 2.5 API
-
-============================================================
-🔥 SUNDAE CRYPTO FUTURES ANALYSIS (Gemini 2.5):
-============================================================
-🔥 SUNDAE: BTC/USDT – LONG (Breakout Setup)
-📍 Entry: $45,200
-🛑 Stop Loss: $44,800
-🎯 Take Profit: TP1: $46,000, TP2: $47,200, TP3: $48,500
-📊 Risk-Reward: 1:2.5
-✅ Confidence Level: 85%
-🔍 Reason / Analysis:
-• Current Trend: Bullish breakout from consolidation
-• Multi-Timeframe: 1D uptrend, 4H breakout, 1H momentum
-• Volume Analysis: Increasing volume on breakout
-• VWAP: Price above VWAP indicating bullish momentum
-• BOS/CHoCH: Break of Structure confirmed at $45,000
-⏰ Estimated Move Duration: 2-3 days
-📈 Scenario if TP: Strong continuation to $48,500
-📉 Scenario if SL: False breakout, return to consolidation
-⚠️ Execution Notes: Wait for candle close above $45,200
-============================================================
+```bash
+streamlit run src/ui/app.py
 ```
 
-## 🔄 Migration from Previous Version
+The application will open in your default web browser at `http://localhost:8501`
 
-If you're upgrading from the previous `google-generativeai` SDK:
+## 📱 How to Use
 
-1. **Update dependencies**: `pip install -r requirements.txt`
-2. **API changes**: The new SDK uses `genai.types.Part.from_data()` for image handling
-3. **Model names**: Updated to use `gemini-2.0-flash-exp` for 2.5 capabilities
+1. **Enter API Key**: Input your Gemini API key in the sidebar
+2. **Upload Trading Chart**: Use the file uploader to select a crypto trading chart image
+3. **Automatic Analysis**: Click "🔥 Analyze with SUNDAE AI" to get automatic trading signals
+4. **View Results**: See the complete SUNDAE analysis with entry, stop loss, take profit levels
+5. **Download Analysis**: Save the trading signal for your records
 
-## 📝 Notes
+## 🔥 SUNDAE Analysis Features
 
-- The system prompt "SUNDAE" is configured in Google AI Studio
-- Gemini 2.5 provides enhanced analysis capabilities for trading charts
-- The script includes automatic fallback to ensure compatibility
-- Image processing is optimized for the new SDK architecture
+The SUNDAE AI automatically provides:
+
+- **Entry Point**: Precise entry price for the trade
+- **Stop Loss**: Risk management level
+- **Take Profit**: Multiple profit targets (TP1, TP2, TP3)
+- **Risk-Reward Ratio**: Calculated risk vs. reward
+- **Confidence Level**: AI confidence in the signal
+- **Technical Analysis**: Multi-timeframe confirmation
+- **Execution Notes**: Trade setup instructions
+
+## ⚙️ Configuration
+
+### Environment Variables
+
+- `GEMINI_API_KEY`: Your Gemini API key (optional, can be entered in UI)
+- `GEMINI_MODEL`: Default model to use (optional)
+
+### Supported Models
+
+- `gemini-2.5-flash` (default)
+- `gemini-2.0-flash-exp`
+- `gemini-1.5-flash`
+
+## 🔧 Development
+
+### Project Structure
+
+- **`src/core/`**: Contains the Gemini AI client and core logic
+- **`src/ui/`**: SUNDAE Streamlit user interface components
+- **`src/utils/`**: Configuration and utility functions
+- **`assets/`**: Sample trading charts and data files
+
+## 📋 Requirements
+
+- Python 3.8+
+- Streamlit 1.28+
+- Google Generative AI 0.8+
+- Pillow 10.0+
+- Other dependencies listed in `requirements.txt`
 
 ## 🤝 Contributing
 
-Feel free to submit issues and enhancement requests!
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
 
 ## 📄 License
 
-This project is licensed under the terms specified in the LICENSE file.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Google Gemini AI for providing the AI capabilities
+- Streamlit for the excellent web application framework
+- SUNDAE system prompt for professional crypto analysis
+- Open source community for inspiration and tools
+
+⭐ **Don't forget to star this repository if you find this project helpful!**
+
+---
+
+**Note**: Make sure to keep your API keys secure and never commit them to version control.
+
+**VinLvy ADIOS**
