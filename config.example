@@ -1,0 +1,12 @@
+# Gemini AI Configuration
+# Copy this file to .env and fill in your actual values
+
+# Your Gemini API key from Google AI Studio
+GEMINI_API_KEY=your_api_key_here
+
+# Default Gemini model to use
+GEMINI_MODEL=gemini-2.5-flash
+
+# Application settings
+STREAMLIT_SERVER_PORT=8501
+STREAMLIT_SERVER_ADDRESS=localhost
