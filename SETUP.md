@@ -1,6 +1,6 @@
 # Setup Guide - SUNDAE Crypto Futures Analyst with Gemini 2.5
 
-This guide will help you set up the SUNDAE Crypto Futures Analyst project with the latest Gemini 2.5 AI model. The system provides ready-to-execute trading signals in a professional format using the SUNDAE crypto futures analyst system prompt.
+This guide will help you set up the SUNDAE Crypto Futures Analyst project with the latest Gemini 2.5 AI model. The system provides ready-to-execute trading signals in a professional format using the SUNDAE crypto futures analyst system prompt through a modern Streamlit web interface.
 
 ## 🚀 Quick Start
 
@@ -41,41 +41,66 @@ export GEMINI_API_KEY="your_api_key_here"
 echo "GEMINI_API_KEY=your_api_key_here" > .env
 ```
 
-#### Method C: Local Configuration File
+#### Method C: Configuration File
+
+Copy the example configuration and update it:
 
 ```bash
-mkdir config
-echo "your_api_key_here" > config/gemini_api_key.txt
+cp config.example .env
+# Then edit .env with your actual API key
 ```
 
-### 4. Test the Setup
+### 4. Launch the Application
+
+#### Option 1: Using the Launcher Script (Recommended)
 
 ```bash
-python test_gemini.py
+# Windows
+run_app.bat
+
+# Linux/Mac
+./run_app.sh
+
+# Python (cross-platform)
+python run_app.py
 ```
+
+#### Option 2: Direct Streamlit Command
+
+```bash
+streamlit run src/ui/app.py --server.port 8501
+```
+
+The application will automatically open in your default web browser at `http://localhost:8501`.
 
 ## 🔧 Advanced Configuration
 
 ### Model Selection
 
-The script automatically uses the best available model:
+The application supports multiple Gemini models:
 
 - **Primary**: `gemini-2.5-flash` (latest stable Gemini 2.5 model)
-- **Fallback**: `gemini-1.5-flash` (if 2.5 unavailable)
+- **Alternative**: `gemini-2.0-flash-exp` (experimental 2.0 model)
+- **Fallback**: `gemini-1.5-flash` (stable 1.5 model)
 
-### Custom Model Configuration
+You can change the model in the web interface sidebar or set it in your `.env` file:
 
-You can modify the model selection in `test_gemini.py`:
+```bash
+GEMINI_MODEL=gemini-2.5-flash
+```
 
-```python
-def load_gemini_model():
-    try:
-        # Use specific model
-        model = genai.GenerativeModel('gemini-2.5-flash')
-        return model
-    except Exception as e:
-        # Fallback logic
-        pass
+### Application Settings
+
+Customize the application behavior in your `.env` file:
+
+```bash
+# Server configuration
+STREAMLIT_SERVER_PORT=8501
+STREAMLIT_SERVER_ADDRESS=localhost
+
+# Gemini configuration
+GEMINI_API_KEY=your_api_key_here
+GEMINI_MODEL=gemini-2.5-flash
 ```
 
 ### Image Format Support
@@ -85,8 +110,8 @@ Supported formats:
 - PNG (recommended)
 - JPEG/JPG
 - WebP
+- GIF
 - BMP
-- TIFF
 
 ## 🐛 Troubleshooting
 
@@ -110,7 +135,7 @@ Supported formats:
 
 - Check your internet connection
 - Verify your API key is valid
-- The script will automatically fall back to Gemini 1.5
+- The application will automatically fall back to alternative models
 
 #### 3. Image Processing Error
 
@@ -120,9 +145,10 @@ Supported formats:
 
 **Solution**:
 
-- Ensure the image file exists
+- Ensure the image file exists and is not corrupted
 - Check file permissions
 - Verify image format is supported
+- Keep images under 4MB for optimal performance
 
 #### 4. Import Error
 
@@ -136,11 +162,24 @@ ModuleNotFoundError: No module named 'google.genai'
 pip install -r requirements.txt
 ```
 
+#### 5. Streamlit Not Found
+
+```
+❌ Streamlit is not installed
+```
+
+**Solution**: The launcher script will automatically install Streamlit if needed, or install manually:
+
+```bash
+pip install streamlit
+```
+
 ### Performance Optimization
 
 - **Image Size**: Keep images under 4MB for optimal performance
 - **Format**: PNG provides best quality for charts
 - **Resolution**: 1920x1080 or lower recommended
+- **Browser**: Use modern browsers (Chrome, Firefox, Safari, Edge)
 
 ## 📱 SUNDAE System Prompt
 
@@ -181,30 +220,34 @@ If you're upgrading from the old `google-generativeai` SDK:
    ```
 3. **Test the new setup**:
    ```bash
-   python test_gemini.py
+   python run_app.py
    ```
 
-## 📊 Testing Your Setup
+## 📊 Using the Application
 
-### 1. Basic Test
+### 1. Launch the App
 
-```bash
-python test_gemini.py
-```
+Run one of the launcher scripts or commands above.
 
-### 2. Custom Image Test
+### 2. Configure API Key
 
-Modify the `image_path` variable in the script to test with your own images.
+Enter your Gemini API key in the sidebar.
 
-### 3. API Response Test
+### 3. Upload Trading Chart
 
-The script should output:
+Use the file uploader to select your crypto trading chart image.
 
-- ✅ Gemini API key configured successfully
-- ✅ Gemini 2.5 Flash model loaded successfully
-- ✅ Image loaded successfully
-- 🔄 Sending image to Gemini 2.5 API for SUNDAE analysis...
-- ✅ Received SUNDAE analysis from Gemini 2.5 API
+### 4. Select Model
+
+Choose your preferred Gemini model from the dropdown.
+
+### 5. Analyze
+
+Click the "🔥 Analyze with SUNDAE AI" button to get your trading signals.
+
+### 6. View Results
+
+The analysis will appear below with the complete SUNDAE format.
 
 **Expected SUNDAE Output Format:**
 
@@ -226,11 +269,11 @@ The script should output:
 
 After successful setup:
 
-1. **Customize the system prompt** in Google AI Studio
-2. **Test with various chart types** (candlestick, line, etc.)
+1. **Test with various chart types** (candlestick, line, etc.)
+2. **Customize analysis parameters** in the web interface
 3. **Integrate with your trading workflow**
 4. **Monitor API usage** and costs
-5. **Fine-tune analysis parameters**
+5. **Fine-tune the SUNDAE prompt** for your specific needs
 
 ## 📞 Support
 
@@ -240,6 +283,7 @@ If you encounter issues:
 2. Verify your API key is active
 3. Test with a simple image first
 4. Check the [Google AI Studio documentation](https://ai.google.dev/docs)
+5. Ensure all dependencies are properly installed
 
 ## 🔒 Security Notes
 
@@ -247,3 +291,22 @@ If you encounter issues:
 - Use environment variables for production deployments
 - Regularly rotate your API keys
 - Monitor API usage for unusual activity
+- The `.env` file is automatically ignored by git
+
+## 🚀 Deployment Options
+
+### Local Development
+
+```bash
+python run_app.py
+```
+
+### Production Server
+
+```bash
+streamlit run src/ui/app.py --server.port 8501 --server.address 0.0.0.0
+```
+
+### Docker (Future Enhancement)
+
+Docker support will be added in future versions for easy deployment.
