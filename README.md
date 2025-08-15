@@ -17,7 +17,7 @@ A powerful Streamlit application that uses Google's Gemini AI to automatically a
 1. **Clone the repository**:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/VinLvy/SUNDAE
    cd SUNDAE
    ```
 
@@ -77,9 +77,11 @@ The SUNDAE AI automatically provides:
 
 ### Supported Models
 
-- `gemini-2.5-flash` (default)
+- `gemini-2.5-flash` (Default)
 - `gemini-2.0-flash-exp`
 - `gemini-1.5-flash`
+
+- `gemini-2.5-pro` (Coming Soon)
 
 ## 🔧 Development
 
@@ -88,7 +90,6 @@ The SUNDAE AI automatically provides:
 - **`src/core/`**: Contains the Gemini AI client and core logic
 - **`src/ui/`**: SUNDAE Streamlit user interface components
 - **`src/utils/`**: Configuration and utility functions
-- **`assets/`**: Sample trading charts and data files
 
 ## 📋 Requirements
 
