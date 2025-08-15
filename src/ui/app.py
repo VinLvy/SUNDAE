@@ -88,9 +88,30 @@ def main():
             
             # SUNDAE Analysis Button
             st.markdown("---")
+            
+            # Custom CSS for green button
+            st.markdown("""
+            <style>
+            .stButton > button {
+                background-color: #28a745 !important;
+                color: white !important;
+                border: none !important;
+                border-radius: 5px !important;
+                padding: 10px 20px !important;
+                font-weight: bold !important;
+            }
+            .stButton > button:hover {
+                background-color: #218838 !important;
+            }
+            .stButton > button:disabled {
+                background-color: #6c757d !important;
+                opacity: 0.6 !important;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+            
             analyze_button = st.button(
                 "🔥 Analyze with SUNDAE AI",
-                type="primary",
                 use_container_width=True,
                 disabled=not api_key
             )
