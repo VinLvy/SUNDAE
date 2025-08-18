@@ -95,7 +95,6 @@ The SUNDAE AI automatically provides:
 
 - Python 3.8+
 - Streamlit 1.28+
-- Google Generative AI 0.8+
 - Pillow 10.0+
 - Other dependencies listed in `requirements.txt`
 
