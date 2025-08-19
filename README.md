@@ -128,4 +128,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Note**: Make sure to keep your API keys secure and never commit them to version control.
 
-**VinLvy ADIOS**
+---
+
+**Created with ❤️ by VinLvy**
+
+_This project represents the culmination of countless hours of development, testing, and refinement. If you find it valuable, please consider supporting the development by starring this repository or contributing to its growth._
+
+---
