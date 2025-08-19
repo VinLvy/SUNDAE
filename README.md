@@ -2,6 +2,11 @@
 
 A powerful Streamlit application that uses Google's Gemini AI to automatically analyze crypto trading charts and provide ready-to-execute trading signals using the SUNDAE system prompt.
 
+**⚠️ Important Disclaimers**:
+
+- **DYOR (Do Your Own Research)**: This tool is for educational and informational purposes only. Always conduct your own research before making any trading decisions.
+- **NFA (Not Financial Advice)**: The analysis provided by this application is not financial advice. Trading cryptocurrencies involves significant risk and you should consult with qualified financial advisors before making investment decisions.
+
 ## 🚀 Features
 
 - **🔥 SUNDAE AI Analysis**: Automatic crypto futures analysis with predefined professional prompts
