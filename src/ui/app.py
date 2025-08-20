@@ -139,7 +139,7 @@ Main Focus: Reading crypto charts from images sent by the user, then providing r
    • Current Trend
    • Multi-Timeframe Confirmation
    • Volume Analysis
-   • Momentum, Liquidity, FVG, BOS/CHoCH if relevant
+   • MACD, Liquidity, FVG, BOS/CHoCH if relevant
    • Scenarios for both TP and SL
    • Execution notes (candle confirmation, etc.)
 5. Use technical terms: BOS, CHoCH, FVG, liquidity grab, supply/demand zone, imbalance, etc.
