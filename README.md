@@ -61,6 +61,13 @@ The application will open in your default web browser at `http://localhost:8501`
 4. **View Results**: See the complete SUNDAE analysis with entry, stop loss, take profit levels
 5. **Download Analysis**: Save the trading signal for your records
 
+### 💡 Recommended Chart Setup
+
+- **Timeframe**: 1H (1-hour)
+- **Indicators**:
+  - Smart Money Concepts by BigBeluga
+  - MACD
+
 ## 🔥 SUNDAE Analysis Features
 
 The SUNDAE AI automatically provides:
