@@ -120,8 +120,8 @@ class GeminiClient:
         """Get list of supported Gemini models"""
         return [
             "gemini-2.5-flash",
-            "gemini-2.0-flash-exp", 
-            "gemini-1.5-flash"
+            "gemini-2.5-pro",
+            "gemini-3-flash-preview"
         ]
     
     def change_model(self, new_model: str):
