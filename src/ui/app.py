@@ -37,7 +37,7 @@ def main():
         # Model selection
         model = st.selectbox(
             "Select Model:",
-            ["gemini-2.5-flash", "gemini-2.0-flash-exp", "gemini-1.5-flash"],
+            ["gemini-2.5-flash", "gemini-2.5-pro", "gemini-3-flash-preview"],
             index=0,
             help="Choose the Gemini model to use for analysis"
         )
